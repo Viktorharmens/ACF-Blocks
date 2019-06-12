@@ -7,11 +7,12 @@
 			'name'              => 'newimage-block',
 			'title'             => __('New Image Block'),
 			'description'       => __('A different image block.'),
-			'render_template'   => 'blocks/newimage-block.php',
+			'render_template'   => 'blocks/new-image/newimage-block.php',
 			'category'          => 'formatting',
 			'icon'              => 'admin-comments',
 			'keywords'          => array( 'image', 'text' ),
-			'mode'				=> 'auto'
+			'mode'				=> 'auto',
+			'enqueue_style' 	=> get_template_directory_uri() . '/blocks/new-image/newimage.css',
 		));
 	}
 
@@ -24,7 +25,7 @@
 	 * Enqueue Gutenberg scripts and styles to backend area.
 	 */
 	function wds_gutenberg_assets() {
-		wp_enqueue_style( 'wds-gutenberg-admin', get_stylesheet_directory_uri() . '/gutenberg.css', array(), '1.0.0' );
+		wp_enqueue_style( 'wds-gutenberg-admin', get_stylesheet_directory_uri() . 'blocks/new-image/newimage.css', array(), '1.0.0' );
 	}
 	add_action( 'enqueue_block_assets', 'wds_gutenberg_assets' );
 
