@@ -1,0 +1,50 @@
+{
+  "name": "holland-employment-experts",
+  "version": "1.2.9",
+  "description": "Een WordPress thema voor Holland Employment Experts",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VisualMasters/Holland-Employment-Experts-Website.git"
+  },
+  "author": "VisualMasters",
+  "contributors": [
+    "Justin Streuper",
+    "Viktor Harmens"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VisualMasters/Holland-Employment-Experts-Website.git/issues"
+  },
+  "homepage": "https://github.com/VisualMasters/Holland-Employment-Experts-Website.git#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "del": "^3.0.0",
+    "fs": "0.0.1-security",
+    "ftp-deploy": "^2.3.3",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-cache": "^1.1.1",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-eslint": "^5.0.0",
+    "gulp-imagemin": "^5.0.3",
+    "gulp-notify": "^3.2.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.1",
+    "imagemin": "^6.1.0",
+    "npm-version": "^1.1.0",
+    "path": "^0.12.7",
+    "run-sequence": "^2.2.1",
+    "slack-notify": "^0.1.7"
+  },
+  "dependencies": {
+    "dotdotdot-js": "^4.0.8",
+    "dotenv": "^6.2.0",
+    "gulp": "^4.0.0",
+    "jquery": "^3.3.1"
+  }
+}
