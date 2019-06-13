@@ -29,6 +29,9 @@ if( $is_preview ) {
 
 ?>
 <div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
+
+<h1><?php the_field('title');?></h1>
+
     <?php if( have_rows('slides') ): ?>
 		<div class="slides">
 			<?php while( have_rows('slides') ): the_row(); 

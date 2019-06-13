@@ -1,0 +1,53 @@
+.slider {
+    padding: 0 0 5px;
+}
+
+
+.slides img {
+        height:60vh;
+        width: auto;
+        padding: 2vh;
+}
+
+.slick-slide {
+    opacity: 0.3;
+}
+
+.slick-current {
+    opacity: 1;
+}
+
+.slick-slider .prev {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translate(0,-50%);
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-top: 5px solid red;
+    border-left: 5px solid red;
+    border-right: 0;
+    border-bottom: 0;
+    background: none;
+    transform: rotate(-45deg);
+    z-index: 999;
+
+} 
+
+.slick-slider .next {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translate(0,-50%);
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-top: 5px solid red;
+    border-right: 5px solid red;
+    border-bottom: 0;
+    border-left: 0;
+    background: none;
+    transform: rotate(45deg);
+    z-index: 999;
+} 
