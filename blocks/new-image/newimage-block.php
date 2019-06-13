@@ -30,12 +30,13 @@ $image = get_field('image') ?: 295;
 $button = get_field('button') ?: 'Button link hier';
 $background_color = get_field('background_color');
 $text_color = get_field('text_color');
+$order = get_field('order');
 
 ?>
 
 <h2><?php the_field('title');?></h2>
 
-<div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
+<div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>" data-image="<?php echo $order; ?>">
 
     <div class="flexbox">
 
