@@ -33,7 +33,7 @@ $text_color = get_field('text_color');
 
 ?>
 
-<h1><?php the_title();?></h1>
+<h2><?php the_field('title');?></h2>
 
 <div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
 
