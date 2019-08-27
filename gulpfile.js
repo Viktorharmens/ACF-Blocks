@@ -8,21 +8,20 @@
  * @author     Justin Streuper
  * @copyright  2019 VisualMasters
  * @license    GPL License
- * @version    1.0.0
+ * @version    1.2.1
  * @link       https://www.visualmasters.nl
  * @since      File available since Release 0.1.0
  */
 
 // Set the dependencies
-var fs = require('fs');
-var path = require('path');
 var del = require('del');
-var env = require('dotenv').config({path: '../../../../.env'});
 var browsersync = require('browser-sync');
+var env = require('dotenv').config({path: '../../../../.env'}); 
 
 var gulp = require('gulp');
 var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
+var postcss = require('gulp-postcss');
+var autoprefixer = require('autoprefixer');
 var cleanCSS = require('gulp-clean-css');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
@@ -41,7 +40,7 @@ var directories = {
 };
 
 var vendors = [
-  directories.node + '/dotdotdot-js/dist/dotdotdot.js'
+
 ];
 
 
@@ -50,7 +49,7 @@ var vendors = [
 
 function browserSync(done) {
   browsersync.init({
-    proxy: process.env.WP_HOME,
+    proxy: 'http://localhost:8000', // This, or when using .env file > process.env.WP_HOME
     ghostMode: {
       clicks: false,
       location: false,
@@ -61,7 +60,8 @@ function browserSync(done) {
 }
 
 function browserSyncReload(done) {
-  browsersync.reload();
+  cache.clearAll();
+  browsersync.reload({ stream: true });
   done();
 }
 
@@ -71,6 +71,10 @@ function browserSyncReload(done) {
 
 // Function to compile the base sass
 function sassTheme() {
+  var plugins = [
+    autoprefixer()
+  ];
+
   return gulp.src(directories.src + '/sass/styles.scss')
     .pipe(sass({
       includePaths: [
@@ -79,10 +83,7 @@ function sassTheme() {
         directories.src + '/sections',
       ]
     }))
-    .pipe(autoprefixer({
-      browsers: ['last 2 versions'],
-      cascade: false
-    }))
+    .pipe(postcss(plugins))
     .pipe(cleanCSS())
     .pipe(gulp.dest(directories.dest + '/css'))
     .pipe(browsersync.stream());
@@ -101,7 +102,7 @@ function jsTheme(done) {
       throwError('jsTheme', '', uglify.cause);
     }))
     .pipe(gulp.dest(directories.dest + '/js'));
-  
+
   // Compile the vendors
   if (vendors.length > 0) {
     gulp.src(vendors)
@@ -121,11 +122,11 @@ function jsTheme(done) {
 // Images
 
 function minifyImages(done) {
-  gulp.src( directories.src + '/img/**/*.+(png|jpg|jpeg|gif|svg)')
+  gulp.src(directories.src + '/img/**/*.+(png|jpg|jpeg|gif|svg)')
     .pipe(cache(imagemin({
-        interlaced: true,
+      interlaced: true,
     })))
-    .pipe(gulp.dest( directories.dest + '/img') );
+    .pipe(gulp.dest(directories.dest + '/img'));
   done();
 }
 
@@ -135,11 +136,11 @@ function minifyImages(done) {
 
 // Clean the dist folder
 function cleanupDist() {
-  return del( directories.dest );
+  return del(directories.dest);
 }
 
 // Error function to throw the console error
-function throwError( functionName, filename, errorMesssage ) {
+function throwError(functionName, filename, errorMesssage) {
   console.log('----------------------------------------');
   console.error('There was an error compiling ' + functionName + ' in ' + filename);
   console.error(errorMesssage);
@@ -148,18 +149,18 @@ function throwError( functionName, filename, errorMesssage ) {
 
 // Build function for the style.css and update.json for setting 
 // the correct theme version number from the package.json file
-function buildTheme( done ) {
+function buildTheme(done) {
   var version = pkg.version;
   gulp.src(['style.css'])
-    .pipe(replace( /[0-9]\.[0-9]\.[0-9]/g , version))
+    .pipe(replace(/[0-9]\.[0-9]\.[0-9]/g, version))
     .pipe(gulp.dest('./'));
   done();
 }
 
 // Move font folder to dist
-function moveFonts( done ) {
-  gulp.src( directories.src + '/font/**' )
-      .pipe(gulp.dest(directories.dest + '/font'));
+function moveFonts(done) {
+  gulp.src(directories.src + '/font/**')
+    .pipe(gulp.dest(directories.dest + '/font'));
   done();
 }
 
@@ -171,18 +172,19 @@ function clearCache(done) {
 
 // ======================================================================
 // Watcher
-function watchFiles() {
+function watchFiles(done) {
   gulp.watch('./dev/sass/**/*.scss', sassTheme);
   gulp.watch('./dev/js/**/*.js', jsTheme);
   gulp.watch('./dist/js/*.js', browserSyncReload);
   gulp.watch('./*.php', browserSyncReload);
   gulp.watch('./**/*.php', browserSyncReload);
   gulp.watch('./dev/img/*', minifyImages);
+  done();
 }
 
 
 /* -------
-  Export the Gulp tasks
+Export the Gulp tasks
 ------- */
 exports.default = gulp.series([
   cleanupDist,

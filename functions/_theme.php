@@ -8,8 +8,11 @@
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-thumbnails' ); 
 	add_image_size( 'slideshow', 1500, 800, true ); 
-	
-	
+
+
+	// Enable full and wide alignment for Gutenberg
+	add_theme_support( 'align-wide' );
+
 	
 	// Register navigation
 	function setup_navs() {
@@ -47,9 +50,10 @@
 		wp_register_script('jquery', 'https://code.jquery.com/jquery-2.2.4.min.js', false, null);
 		wp_enqueue_script('jquery', null, null, false);
 		
-		wp_enqueue_script("plugins", get_stylesheet_directory_uri() . '/dist/js/plugins.js', null, THEME_VERSION, true);
+	
 		wp_enqueue_script("scripts", get_stylesheet_directory_uri() . '/dist/js/scripts.js', null, THEME_VERSION, true);
-		wp_enqueue_script("theme", get_stylesheet_directory_uri() . '/dist/js/theme.js', null, THEME_VERSION, true);
+		wp_enqueue_script("scripts", get_stylesheet_directory_uri() . '/dist/js/editor.js', null, THEME_VERSION, true);
+		
 		
 		// Initialize Google Maps
 		if( function_exists('get_field') && get_field('googlemaps_apikey', 'option') ) {

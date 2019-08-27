@@ -30,19 +30,23 @@ if( $is_preview ) {
 ?>
 <div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
 
-<h2><?php the_field('title');?></h2>
+	<div class="container">
 
-    <?php if( have_rows('slides') ): ?>
-		<div class="slides">
-			<?php while( have_rows('slides') ): the_row(); 
-				$image = get_sub_field('image');
-				?>
-				<div>
-					<?php echo wp_get_attachment_image( $image['id'], 'full' ); ?>
+		<h2><?php the_field('title');?></h2>
+
+			<?php if( have_rows('slides') ): ?>
+				<div class="slides">
+					<?php while( have_rows('slides') ): the_row(); 
+						$image = get_sub_field('image');
+						?>
+						<div>
+							<?php echo wp_get_attachment_image( $image['id'], 'full' ); ?>
+						</div>
+					<?php endwhile; ?>
 				</div>
-			<?php endwhile; ?>
-		</div>
-	<?php else: ?>
-		<p>Please add some slides.</p>
-	<?php endif; ?>
+			<?php else: ?>
+				<p>Please add some slides.</p>
+			<?php endif; ?>
+
+	</div>
 </div>

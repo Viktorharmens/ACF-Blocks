@@ -34,36 +34,43 @@ $order = get_field('order');
 
 ?>
 
-<h2><?php the_field('title');?></h2>
 
-<div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>" data-image="<?php echo $order; ?>">
 
-    <div class="flexbox">
-
-        <div class="photo">
-            <?php echo wp_get_attachment_image( $image, 'full' ); ?>
-        </div>
-        
-        <span class="image-text">
-            <?php echo $text; ?>
-        </span>
     
-        <?php 
-        
-            if( $button ): 
-                $link_url = $button['url'];
-                $link_title = $button['title'];
-                $link_target = $button['target'] ? $button['target'] : '_self';
-                ?>
-                <a class="btn" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>"><?php echo esc_html($link_title); ?></a>
-        <?php endif; ?>
+
+    <div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>" data-image="<?php echo $order; ?>">
+
+        <div class="container">
+
+            <div class="flexbox">
+
+                <div class="photo">
+                    <?php echo wp_get_attachment_image( $image, 'full', "", array( "class" => "js-image-scale" ) ); ?>
+                </div>
+                
+                <span class="image-text">
+                    <h2><?php the_field('title');?></h2>
+                    <?php echo $text; ?>
+                </span>
+            
+                <?php 
+                
+                    if( $button ): 
+                        $link_url = $button['url'];
+                        $link_title = $button['title'];
+                        $link_target = $button['target'] ? $button['target'] : '_self';
+                        ?>
+                        <a class="btn" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>"><?php echo esc_html($link_title); ?></a>
+                <?php endif; ?>
+
+            </div>
+
+            <style type="text/css">
+                #<?php echo $id; ?> {
+                    background: <?php echo $background_color; ?>;
+                    color: <?php echo $text_color; ?>;
+                }
+            </style>
 
     </div>
-
-    <style type="text/css">
-        #<?php echo $id; ?> {
-            background: <?php echo $background_color; ?>;
-            color: <?php echo $text_color; ?>;
-        }
-    </style>
 </div>
