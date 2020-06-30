@@ -318,4 +318,15 @@
 			echo '<' . $heading['type'] . ' class="heading heading--' . $heading['weight'] . '">' . $heading['title'] . '</' . $heading['type'] . '>';
 		}
 		
-	}	
+  }
+  
+  // Add backend styles for Gutenberg.
+add_action( 'enqueue_block_editor_assets', 'photographus_add_gutenberg_assets' );
+
+/**
+ * Load Gutenberg stylesheet.
+ */
+function photographus_add_gutenberg_assets() {
+	// Load the theme styles within Gutenberg.
+	wp_enqueue_style( 'photographus-gutenberg', get_theme_file_uri( '/dist/css/gutenberg-editor-style.css' ), false );
+}

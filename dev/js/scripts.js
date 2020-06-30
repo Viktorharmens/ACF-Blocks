@@ -98,7 +98,7 @@ function openModal( modal ) {
 		$('body').removeClass('no-scroll');
 		$(window).scrollTop( $('body').attr('data-scrollpos') );
 		$('body').attr( 'data-scrollpos', '' );
-	});
+  });
 		
 	
 })(jQuery);

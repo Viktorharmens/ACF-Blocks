@@ -22,11 +22,13 @@
 	include_once 'functions/_functions.php';
 	include_once 'functions/_customposts.php';
 	include_once 'functions/_shortcodes.php';
-	include_once 'functions/_ajax.php';	
+  include_once 'functions/_ajax.php';
+  include_once 'functions/_patternplugin.php';	
 	
 	// External vendor includes
 	if( !function_exists('include_field_types_Gravity_Forms') ) {
 		include_once 'functions/vendor/gravityforms-acf-population/acf-gravity_forms.php';
-	}
+  }
+
 	
 ?>

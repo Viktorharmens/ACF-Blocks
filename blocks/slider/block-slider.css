@@ -3,21 +3,21 @@
 }
 
 
-.slides img {
-        height:60vh;
-        width: auto;
-        padding: 2vh;
+.slick-slide img {
+  height: 100%;
+  object-fit: contain;
 }
 
 .slick-slide {
     opacity: 0.3;
+    display: flex;
 }
 
 .slick-current {
     opacity: 1;
 }
 
-.slick-slider .prev {
+.slider .slick-slider .prev {
     position: absolute;
     top: 50%;
     left: 10px;
@@ -35,7 +35,7 @@
 
 } 
 
-.slick-slider .next {
+.slider .slick-slider .next {
     position: absolute;
     top: 50%;
     right: 10px;

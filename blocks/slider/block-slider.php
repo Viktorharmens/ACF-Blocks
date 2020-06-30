@@ -40,7 +40,7 @@ if( $is_preview ) {
 						$image = get_sub_field('image');
 						?>
 						<div>
-							<?php echo wp_get_attachment_image( $image['id'], 'full' ); ?>
+              <img src="<?php echo $image['sizes']['large']; ?>" height="auto" width="100%" />
 						</div>
 					<?php endwhile; ?>
 				</div>

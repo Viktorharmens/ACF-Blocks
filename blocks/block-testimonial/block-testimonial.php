@@ -27,21 +27,18 @@
     }
 
     // Load values and assing defaults.
-    $text = get_field('testimonial') ?: 'Your testimonial here...';
-    $author = get_field('author') ?: 'Author name';
-    $role = get_field('role') ?: 'Author role';
-    $image = get_field('image') ?: 295;
-    $background_color = get_field('background_color');
-    $text_color = get_field('text_color');
-
+    $text = get_field('text');
+    $image = get_field('image');
     ?>
 
-<?php
-    echo $text;
-    echo "<pre>";
-    print_r($post->post_content);
-    echo "</pre>";
-?>
 
-<img src="<?php echo $image['url']; ?>">
+  <div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
+
+    <div class="text"><?php echo $text; ?></div>
+
+    <div class="image">
+      <img src="<?php echo $image['url']; ?>">
+    </div>
+
+  </div>
 

@@ -1,0 +1,21 @@
+.testimonial {
+  background: red;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.text {
+  flex: 3;
+  padding: 30px;
+  text-align: center;
+}
+
+.image {
+  flex: 1;
+}
+
+.image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}

@@ -1,34 +1,41 @@
-.wp-block {
-    max-width: 1100px;
-  }
 
 .flexbox {
     display: flex;
     flex-wrap: wrap;
     position: relative;
     height: auto;
-    max-height: 400px;
+
     overflow: hidden;
 }
 
 .photo {
-    flex: 1;
-    width: 50%;
+    flex: 2;
     float: left;
 }
 
-.photo img {
-        width: 100%;
-        height: auto;
+
+.image .photo img {
+  height: 100%;
+  object-fit: cover;
 }
 
-.image-text {
-    flex: 1;
-    width: 50%;
-    padding: 20px;
+.image .image-text {
+    flex: 3;
+    padding: 50px;
+    margin-bottom: 50px;
     float: right;
     font-size: 18px;
     line-height: 140%;
+}
+
+.image-text p {
+  font-family: arial !important;
+  font-size: 17px !important;
+  line-height: 20px !important;
+}
+
+.image-text h2 {
+  font-size: 30px;
 }
 
 [data-image="right"] .image-text {
@@ -40,19 +47,17 @@
 }
 
 [data-image="right"] .btn {
-    left: 20px;
     right: auto;
 }
 
 .btn {
-    background: red;
+    background: #59BACC;
     color: white;
     padding: 10px 20px;
     border: none;
     display: inline-block;
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
+    position: relative;
+    margin-top: 30px;
     text-decoration: none;
     text-transform: uppercase;
 }

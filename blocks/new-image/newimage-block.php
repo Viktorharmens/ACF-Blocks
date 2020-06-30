@@ -32,6 +32,10 @@ $background_color = get_field('background_color');
 $text_color = get_field('text_color');
 $order = get_field('order');
 
+// echo "<pre>";
+// print_r($image);
+// echo "</pre>";
+
 ?>
 
 
@@ -45,23 +49,24 @@ $order = get_field('order');
             <div class="flexbox">
 
                 <div class="photo">
-                    <?php echo wp_get_attachment_image( $image, 'full', "", array( "class" => "js-image-scale" ) ); ?>
+                    <img src="<?php echo $image['sizes']['large']; ?>" />
                 </div>
                 
                 <span class="image-text">
                     <h2><?php the_field('title');?></h2>
                     <?php echo $text; ?>
+
+                    <?php 
+                      if( $button ): 
+                      $link_url = $button['url'];
+                      $link_title = $button['title'];
+                      $link_target = $button['target'] ? $button['target'] : '_self';
+                      ?>
+                      <a class="btn" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>"><?php echo esc_html($link_title); ?></a>
+                    <?php endif; ?>
                 </span>
             
-                <?php 
-                
-                    if( $button ): 
-                        $link_url = $button['url'];
-                        $link_title = $button['title'];
-                        $link_target = $button['target'] ? $button['target'] : '_self';
-                        ?>
-                        <a class="btn" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>"><?php echo esc_html($link_title); ?></a>
-                <?php endif; ?>
+
 
             </div>
 

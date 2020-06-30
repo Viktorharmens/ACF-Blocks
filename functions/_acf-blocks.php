@@ -11,7 +11,7 @@ acf_register_block_type(array(
     'category'          => 'formatting',
     'icon'              => 'admin-comments',
     'keywords'          => array( 'image', 'text' ),
-    'mode'				      =>  'auto',
+    'mode'				      =>  'edit',
     'align'             => array( 'wide', 'full' ),
     'enqueue_assets' 	  => function(){
 
@@ -28,7 +28,7 @@ acf_register_block_type(array(
     'category'          => 'formatting',
     'icon' 				      => 'images-alt2',
     'align'				      => 'full',
-    'mode'              => 'auto',
+    'mode'              => 'edit',
     'enqueue_assets' 	  => function(){
 
         wp_enqueue_style( 'slick', 'http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css', array(), '1.8.1' );
@@ -36,7 +36,7 @@ acf_register_block_type(array(
         wp_enqueue_script( 'slick', 'http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', array('jquery'), '1.8.1', true );
 
         wp_enqueue_style( 'block-slider', get_template_directory_uri() . '/blocks/slider/block-slider.css', array(), '1.0.0' );
-        wp_enqueue_script( 'block-slider', get_template_directory_uri() . '/blocks/slider/slider.js', array(), '1.0.0', true );
+        wp_enqueue_script( 'block-slider-js', get_template_directory_uri() . '/blocks/slider/slider.js', array(), '1.0.0', true );
       },
 ));
 
@@ -44,15 +44,24 @@ acf_register_block_type(array(
   'name'              => 'testimonial',
   'title'             => __('Testimonial'),
   'description'       => __('A custom testimonial block.'),
+  'example'           => array(
+    'attributes' => array(
+        'mode' => 'preview',
+        'data' => array(
+            'text'   => "Blocks are...",
+            'is_preview'    => true
+        )
+    )
+        ),
   'render_template'   => 'blocks/block-testimonial/block-testimonial.php',
   'category'          => 'formatting',
-  'icon' 				      => 'images-alt2',
+  'icon' 				      => '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z" /><path d="M19 13H5v-2h14v2z" /></svg>',
   'align'				      => 'full',
-  'mode'              => 'auto',
+  'supports'          => array('align' => array('full', 'center')),
+  'mode'              => 'edit',
   'enqueue_assets' 	  => function(){
 
-      wp_enqueue_style( 'block-slider', get_template_directory_uri() . '/blocks/block-testimonial/dev/block-testimonial.css', array(), '1.0.0' );
-      wp_enqueue_script( 'block-slider', get_template_directory_uri() . '/blocks/block-testimonial/dev/block-testimonial.js', array(), '1.0.0', true );
+      wp_enqueue_style( 'block-testimonial', get_template_directory_uri() . '/blocks/block-testimonial/block-testimonial.css', array(), '1.0.0' );
     },
 ));
 
