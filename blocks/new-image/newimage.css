@@ -28,12 +28,6 @@
     line-height: 140%;
 }
 
-.image-text p {
-  font-family: arial !important;
-  font-size: 17px !important;
-  line-height: 20px !important;
-}
-
 .image-text h2 {
   font-size: 30px;
 }
@@ -61,3 +55,4 @@
     text-decoration: none;
     text-transform: uppercase;
 }
+

@@ -9,6 +9,13 @@
 	add_theme_support( 'post-thumbnails' ); 
 	add_image_size( 'slideshow', 1500, 800, true ); 
 
+  //enable custom styleet for WordPress editors
+  add_theme_support( 'editor-styles' );
+  add_editor_style( 'style-editor.css' );
+  add_editor_style( 'https://fonts.googleapis.com/css?family=Ropa+Sans' );
+
+  // Enqueue fonts in the editor.
+
 
 	// Enable full and wide alignment for Gutenberg
 	add_theme_support( 'align-wide' );
